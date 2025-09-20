@@ -1,12 +1,13 @@
 import { error } from '@sveltejs/kit';
-import type { views } from '@prisma/client';
 
 import type { PageServerLoad } from './$types';
-import { prisma } from '$lib/providers/prisma';
+import { db } from '$lib/server/db';
+import { views } from '$lib/server/db/schema';
+import { asc } from 'drizzle-orm';
 
 export const load = (async () => {
   try {
-    const postViewsCount: views[] = await prisma.views.findMany({ orderBy: { count: 'desc' } });
+    const postViewsCount = await db.query.views.findMany({ orderBy: [asc(views.counter)] });
 
     return { stats: postViewsCount };
   } catch (err) {

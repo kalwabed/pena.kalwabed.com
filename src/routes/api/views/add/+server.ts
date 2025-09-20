@@ -1,6 +1,7 @@
+import { db } from '$lib/server/db';
+import { views } from '$lib/server/db/schema';
 import { error, json, type RequestHandler } from '@sveltejs/kit';
-
-import { prisma } from '$lib/providers/prisma';
+import { sql } from 'drizzle-orm';
 
 export const POST = (async ({ request }) => {
   const req = await request.json();
@@ -11,20 +12,12 @@ export const POST = (async ({ request }) => {
   }
 
   try {
-    const postViewsCount = await prisma.views.upsert({
-      where: {
-        slug,
-      },
-      create: {
-        slug,
-        count: 1,
-      },
-      update: {
-        count: {
-          increment: 1,
-        },
-      },
-    });
+    const postViewsCount = await db
+      .insert(views)
+      // @ts-expect-error nothing, just ts dumb or its just me
+      .values({ slug, counter: 1 })
+      // @ts-expect-error nothing, just ts dumb or its just me
+      .onConflictDoUpdate({ target: views.slug, set: { counter: sql`${views.counter} + 1` } });
 
     return json(postViewsCount, { status: 201 });
   } catch (error) {
