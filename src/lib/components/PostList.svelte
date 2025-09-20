@@ -11,7 +11,7 @@
 </script>
 
 <section class="mt-6 grid grid-rows-1 gap-6">
-  {#each posts as post}
+  {#each posts as post (post.slug)}
     <CardPost href={`/${post.slug}`} extClass="flex flex-col">
       <h3 class="font-medium font-sans">
         {post.title}

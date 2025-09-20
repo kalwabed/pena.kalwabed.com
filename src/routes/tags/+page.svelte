@@ -18,7 +18,7 @@
 <p class="text-gray-500 dark:text-mauveEleven">Temukan tulisan-tulisan berdasarkan Tag di bawah.</p>
 
 <ul class="flex flex-wrap gap-4 mt-6">
-  {#each tags as tag}
+  {#each tags as tag (tag)}
     <li>
       <Tag {tag} />
     </li>

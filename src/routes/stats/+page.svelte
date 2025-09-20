@@ -23,10 +23,10 @@
     </tr>
   </thead>
   <tbody>
-    {#each stats as stat}
+    {#each stats as stat (stat.slug)}
       <tr class="border">
         <td>{stat.slug}</td>
-        <td class="border-l">{stat.count}</td>
+        <td class="border-l">{stat.counter}</td>
       </tr>
     {/each}
   </tbody>

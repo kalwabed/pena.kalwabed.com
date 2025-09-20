@@ -11,7 +11,7 @@ Website coordinates Kalwabed's abstract writings in Indonesia.
 - SvelteKit
 - TypeScript
 - Uno CSS
-- Prisma + Planetscale
+- Drizzle + Turso
 
 ## Getting Started
 
@@ -30,12 +30,6 @@ cd pena.kalwabed.com
 pnpm install
 ```
 
-Generate Prisma Client.
-
-```bash
-pnpm dlx prisma generate
-```
-
 Finally, run the development server.
 
 ```bash
@@ -48,7 +42,9 @@ Open [http://127.0.0.1:5173](http://127.0.0.1:5173) with your browser to see the
 
 To run this project, you will need to add the following environment variables to your `.env` file.
 
-`DATABASE_URL`: Neon/PostgreSQL database URL.
+`DATABASE_URL`: Turso database URL.
+
+`DATABASE_AUTH_TOKEN`: Turso database access token.
 
 `BOT_TOKEN`: (optional) Telegram bot token.
 
