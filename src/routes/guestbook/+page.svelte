@@ -37,7 +37,7 @@
     </div>
   {/if}
 
-  {#each guestBook as guest}
+  {#each guestBook as guest (guest.id)}
     <div class="flex flex-col max-w-3xl">
       <p>{guest.body}</p>
       <div class="inline-flex space-x-2 text-gray-500 dark:text-mauveEleven">

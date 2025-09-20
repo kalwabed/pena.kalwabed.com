@@ -33,7 +33,7 @@
 <nav class="max-w-screen-xl mx-auto w-full p-4 flex items-center gap-3">
   <Logo />
   <div class="link inline-flex items-center gap-1">
-    {#each breadcrumbs as breadcrumb}
+    {#each breadcrumbs as breadcrumb (breadcrumb.url)}
       <a
         transition:fly={{ x: -10 }}
         href={breadcrumb.url}

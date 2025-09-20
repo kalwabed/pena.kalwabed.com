@@ -82,7 +82,7 @@
   <footer class="w-full flex flex-col my-14">
     <Divider />
     <div class="inline-flex items-center space-x-2 my-4">
-      {#each tags as tag}
+      {#each tags as tag (tag)}
         <Tag {tag} />
       {/each}
     </div>
