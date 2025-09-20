@@ -44,7 +44,7 @@ To run this project, you will need to add the following environment variables to
 
 `DATABASE_URL`: Turso database URL.
 
-`DATABASE_ACCESS_TOKEN`: Turso database access token.
+`DATABASE_AUTH_TOKEN`: Turso database access token.
 
 `BOT_TOKEN`: (optional) Telegram bot token.
 
