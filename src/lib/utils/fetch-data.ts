@@ -10,7 +10,7 @@ export interface Post {
   slug: string;
 }
 
-export const POSTS = import.meta.glob<string>('../../routes/**/+page.svx', {
+export const POSTS = import.meta.glob<string>('/src/routes/**/+page.svx', {
   query: '?raw',
   import: 'default',
 });
