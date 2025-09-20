@@ -2,11 +2,13 @@ import { error, fail } from '@sveltejs/kit';
 import { BOT_GROUP_ID, BOT_TOKEN } from '$env/static/private';
 
 import type { PageServerLoad, Actions } from './$types';
-import { prisma } from '$lib/providers/prisma';
+import { db } from '$lib/server/db';
+import { desc } from 'drizzle-orm';
+import { guestBooks } from '$lib/server/db/schema';
 
 export const load = (async () => {
   try {
-    const guests = await prisma.guest_books.findMany({ orderBy: { created_at: 'desc' } });
+    const guests = await db.query.guestBooks.findMany({ orderBy: [desc(guestBooks.createdAt)] });
 
     return { guests };
   } catch (err) {
@@ -27,12 +29,10 @@ export const actions = {
     }
 
     try {
-      await prisma.guest_books.create({
-        data: {
-          name,
-          body,
-          email,
-        },
+      await db.insert(guestBooks).values({
+        name,
+        body,
+        email,
       });
 
       const escapedText = (text: string) => {

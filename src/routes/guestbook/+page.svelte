@@ -15,7 +15,7 @@
     data?.guests?.map(guest => {
       return {
         ...guest,
-        date: dateFormatter(guest.created_at, { hour: '2-digit', minute: '2-digit' }),
+        date: dateFormatter(guest.createdAt, { hour: '2-digit', minute: '2-digit' }),
       };
     })
   );
@@ -33,7 +33,7 @@
 <div class="grid grid-rows-1 gap-8">
   {#if guestBook.length === 0}
     <div class="w-full md:w-3/4 text-center bg-gray-50 dark:bg-mauveThree rounded-lg shadow p-4">
-      <p class="font-semibold">Memuat...</p>
+      <p class="font-semibold">Belum ada pesan</p>
     </div>
   {/if}
 
