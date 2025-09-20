@@ -5,7 +5,7 @@ export const guestBooks = sqliteTable('guest_books', {
   name: text('name').notNull(),
   body: text('body').notNull(),
   email: text('email').notNull(),
-  createdAt: integer('created_at', { mode: 'timestamp' })
+  createdAt: integer('created_at', { mode: 'timestamp_ms' })
     .notNull()
     .$default(() => new Date()),
   updatedAt: integer('updated_at', { mode: 'timestamp' }).$onUpdate(() => new Date()),
