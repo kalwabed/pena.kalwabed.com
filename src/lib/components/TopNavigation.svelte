@@ -3,6 +3,7 @@
   import { fly } from 'svelte/transition';
 
   import Logo from './Logo.svelte';
+  import { resolve } from '$app/paths';
 
   let breadcrumbs: { url: string; label: string }[] = $state([]);
 
@@ -36,7 +37,7 @@
     {#each breadcrumbs as breadcrumb (breadcrumb.url)}
       <a
         transition:fly={{ x: -10 }}
-        href={breadcrumb.url}
+        href={resolve(breadcrumb.url)}
         class="outline-none hover:bg-gray-200 focus:(ring ring-offset-2 ring-blue-500) dark:hover:bg-plumTen p-0.5"
       >
         {breadcrumb.label}
