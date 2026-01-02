@@ -4,6 +4,7 @@
   import PostList from '$lib/components/PostList.svelte';
   import Seo from '$lib/components/SEO.svelte';
   import Logo from '$lib/components/Logo.svelte';
+  import { resolve } from '$app/paths';
 
   interface Props {
     data: PageData;
@@ -25,7 +26,7 @@
 
 <a
   class="mt-8 mb-16 font-semibold text-blue-700 bg-gray-200 border hover:(border-gray-200 bg-gray-300) dark:(bg-plumFour text-plumEleven border-plumSeven) hover:dark:(bg-plumFive border-plumEight) focus:dark:bg-plumSeven py-1 px-2 rounded-sm w-fit transition"
-  href="/guestbook">👤 Buku tamu</a
+  href={resolve('/guestbook')}>👤 Buku tamu</a
 >
 
 <Divider />
